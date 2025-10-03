@@ -1,0 +1,287 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Kanthimathinathan P - Portfolio</title>
+  <style>
+    body {
+      font-family: sans-serif;
+      margin: 0;
+      padding: 0;
+      background-color: #f4f4f4;
+      color: #333;
+      line-height: 1.6;
+    }
+
+    /* Container */
+    .container {
+      width: 80%;
+      margin: auto;
+      overflow: hidden;
+    }
+
+    h1, h2, h3 {
+      margin-bottom: 15px;
+    }
+
+    /* Hero Section */
+    #hero {
+      background-color: #3498db;
+      color: #fff;
+      padding: 80px 0;
+    }
+
+    #hero .container {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+    }
+
+    #hero .hero-content {
+      flex: 1;
+      text-align: center;
+    }
+
+    #hero h1 {
+      font-size: 3em;
+      margin-bottom: 10px;
+    }
+
+    #hero p {
+      font-size: 1.2em;
+    }
+
+    #hero img {
+      max-width: 200px;
+      border-radius: 10%;
+      margin-right: 100px;    
+    }
+
+    /* Section Styles */
+    section {
+      padding: 50px 0;
+    }
+
+    section h2 {
+      text-align: center;
+      margin-bottom: 25px;
+    }
+
+    #about, #achievements, #blog {
+      background-color: #fff;
+    }
+
+    #skills, #projects {
+      background-color: #f9f9f9;
+    }
+
+    #about p {
+      text-align: justify;
+      font-size: 1.1em;
+    }
+
+    /* Skills + Projects Animation Base */
+    .animate-item {
+      opacity: 0;
+      transform: translateY(40px);
+      transition: all 0.8s ease-in-out;
+    }
+
+    .animate-item.show {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    /* Skills */
+    .skill-badge {
+      display: inline-block;
+      padding: 8px 15px;
+      margin: 5px;
+      border-radius: 20px;
+      color: #fff;
+      font-size: 0.9em;
+    }
+
+    .python { margin: 30px; background-color: #3498db; }
+    .linux { margin: 30px; background-color: #2ecc71; }
+    .vapt { margin: 30px; background-color: #e74c3c; }
+    .bash { margin: 30px; background-color: #f39c12; }
+    .windows { margin: 30px; background-color: #9b59b6; }
+
+    /* Achievements */
+    #achievements ul {
+      list-style: disc;
+      margin-left: 40px;
+    }
+
+    /* Projects */
+    .project {
+      margin-bottom: 30px;
+      background: #fff;
+      padding: 20px;
+      border-radius: 10px;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    }
+
+    .project h3 {
+      margin-bottom: 5px;
+    }
+
+    /* Contact */
+    #contact {
+      background-color: #333;
+      color: #fff;
+      text-align: center;
+    }
+
+    #contact a {
+      color: #fff;
+      text-decoration: none;
+    }
+
+    #contact a:hover {
+      text-decoration: underline;
+    }
+
+    /* Footer */
+    footer {
+      text-align: center;
+      padding: 20px 0;
+      background-color: #222;
+      color: #fff;
+    }
+
+    /* Responsive */
+    @media (max-width: 768px) {
+      .container {
+        width: 95%;
+      }
+
+      #hero .container {
+        flex-direction: column;
+        text-align: center;
+      }
+
+      #hero .hero-content {
+        text-align: center;
+        margin-bottom: 20px;
+      }
+
+      #hero img {
+        margin: 0 auto;
+      }
+
+      #hero h1 {
+        font-size: 2.2em;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <div id="hero">
+      <div class="container">
+        <div class="hero-content">
+          <h1>Kanthimathinathan P</h1>
+          <p>Aspiring Cybersecurity Professional and Web Developer</p>
+        </div>
+        <img src="C:\Users\pmano\OneDrive\Documents\kanthimathinathan pic.jpg" alt="Kanthimathinathan P">
+      </div>
+    </div>
+  </header>
+
+  <section id="about">
+    <div class="container">
+      <h2>About Me</h2>
+      <p>
+        A passionate and driven individual with a strong interest in cybersecurity and web development. I am currently honing my skills in Python, Linux, and VAPT, aiming to build a robust foundation for a successful career in the tech industry. I thrive on challenges and enjoy tackling complex problems with creative solutions. My participation in the MSME Hackathon has further fueled my enthusiasm for innovation and teamwork. I am eager to contribute my skills and learn from experienced professionals in a dynamic environment.
+      </p>
+    </div>
+  </section>
+
+  <section id="skills">
+    <div class="container">
+      <h2>Skills</h2>
+      <div class="skill-badge python animate-item">Python - Intermediate</div>
+      <div class="skill-badge linux animate-item">Linux - Intermediate</div>
+      <div class="skill-badge vapt animate-item">VAPT - Intermediate</div>
+      <div class="skill-badge bash animate-item">Bash - Basic</div>
+      <div class="skill-badge windows animate-item">Windows - Intermediate</div>
+    </div>
+  </section>
+
+  <section id="achievements">
+    <div class="container">
+      <h2>Achievements</h2>
+      <ul>
+        <li>Participated in MSME Hackathon</li>
+      </ul>
+    </div>
+  </section>
+
+  <section id="projects">
+    <div class="container">
+      <h2>Projects</h2>
+
+      <div class="project animate-item">
+        <h3>Negotiating E-commerce Website</h3>
+        <p>Developed an e-commerce platform with dynamic pricing and negotiation features, allowing customers to bargain for better deals. Implemented using HTML, CSS, JS, PHP, MySQL.</p>
+      </div>
+
+      <div class="project animate-item">
+        <h3>Sign Language to Regional Language Converter</h3>
+        <p>Created a system to translate sign language gestures into a regional spoken language, facilitating communication for individuals with hearing impairments. Utilized Figma for design and prototyping.</p>
+      </div>
+    </div>
+  </section>
+
+  <section id="blog">
+    <div class="container">
+      <h2>Blog</h2>
+      <h3>Blog Post Coming Soon</h3>
+      <p>Stay Tuned for More!</p>
+    </div>
+  </section>
+
+  <section id="contact">
+    <div class="container">
+      <h2>Contact Me</h2>
+      <p>Email: <a href="mailto:kanthimanoj375@gmail.com">kanthimanoj375@gmail.com</a></p>
+      <p>Phone: <a href="tel:+916383349601">+91-6383349601</a></p>
+      <p>Location: Tirunelveli, India</p>
+      <p>
+        LinkedIn: 
+        <a href="https://www.linkedin.com/in/kanthimathinathan-p-314212291/" target="_blank">
+          linkedin.com/in/kanthimathinathan-p
+        </a>
+      </p>
+    </div>
+  </section>
+
+  <footer>
+    <p>&copy; 2025 Kanthimathinathan P. All rights reserved.</p>
+  </footer>
+
+  <!-- Scroll Animation Script -->
+  <script>
+    const animatedItems = document.querySelectorAll('.animate-item');
+
+    function revealOnScroll() {
+      const triggerBottom = window.innerHeight * 0.85;
+
+      animatedItems.forEach(item => {
+        const itemTop = item.getBoundingClientRect().top;
+        if (itemTop < triggerBottom) {
+          item.classList.add('show');
+        }
+      });
+    }
+
+    window.addEventListener('scroll', revealOnScroll);
+    window.addEventListener('load', revealOnScroll);
+  </script>
+</body>
+</html>
