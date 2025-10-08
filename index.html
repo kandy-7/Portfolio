@@ -53,10 +53,15 @@
       font-size: 1.2em;
     }
 
-    #hero img {
-      max-width: 200px;
+    /* ✅ Hero Image as background */
+    #hero .hero-image {
+      width: 200px;
+      height: 200px;
       border-radius: 10%;
-      margin-right: 100px;    
+      background-image: url("images/kanthimathinathan-pic.jpg");
+      background-size: cover;
+      background-position: center;
+      margin-right: 100px;
     }
 
     /* Section Styles */
@@ -169,8 +174,9 @@
         margin-bottom: 20px;
       }
 
-      #hero img {
+      #hero .hero-image {
         margin: 0 auto;
+        margin-bottom: 20px;
       }
 
       #hero h1 {
@@ -188,7 +194,8 @@
           <h1>Kanthimathinathan P</h1>
           <p>Aspiring Cybersecurity Professional and Web Developer</p>
         </div>
-        <img src="C:\Users\pmano\OneDrive\Documents\kanthimathinathan pic.jpg" alt="Kanthimathinathan P">
+        <!-- ✅ Replaced <img> with div background-image -->
+        <div class="hero-image"></div>
       </div>
     </div>
   </header>
