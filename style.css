@@ -141,16 +141,32 @@ section {
     transition: var(--transition);
     margin-top: -160px;
     margin-bottom: 150px;
+    animation: flicker 3s infinite;
 }
 
 
-@keyframes rotate {
-    from {
-        transform: rotate(0deg);
+@keyframes flicker {
+
+    0%,
+    19.999%,
+    22%,
+    62.999%,
+    64%,
+    64.999%,
+    70%,
+    100% {
+        opacity: 1;
+        filter: brightness(1) contrast(1);
     }
 
-    to {
-        transform: rotate(360deg);
+    20%,
+    21.999%,
+    63%,
+    63.999%,
+    65%,
+    69.999% {
+        opacity: 0.8;
+        filter: brightness(1.5) contrast(1.2) hue-rotate(10deg);
     }
 }
 
