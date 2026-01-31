@@ -173,8 +173,8 @@ section {
 .profile-img:hover {
     transform: scale(1.05);
     /* box-shadow: 0 0 50px var(--neon-green); */
-    clip-path: polygon(0% 0%, 48% 0%, 48% 100%, 0% 100%, 0% 100%, 52% 100%, 52% 0%, 100% 0%, 100% 100%, 0% 100%);
-    filter: drop-shadow(4px 0px 0px var(--neon-green)) drop-shadow(-4px 0px 0px #ff00ff);
+    clip-path: polygon(0% 10%, 100% 10%, 100% 30%, 0% 30%, 0% 50%, 100% 50%, 100% 70%, 0% 70%, 0% 90%, 100% 90%);
+    filter: drop-shadow(0px 4px 0px var(--neon-green)) drop-shadow(0px -4px 0px #ff00ff);
 }
 
 .terminal-text {
