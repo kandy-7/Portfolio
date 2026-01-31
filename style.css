@@ -129,28 +129,20 @@ section {
 }
 
 .profile-img {
-    width: 300px;
-    height: 300px;
+    width: 250px;
+    height: 250px;
     object-fit: cover;
-    border-radius: 50%;
-    border: 3px solid var(--neon-green);
-    box-shadow: 0 0 30px var(--neon-glow);
-    filter: drop-shadow(0 0 10px var(--neon-green));
+    border-radius: 8px;
+    /* border: 3px solid var(--neon-green);
+    box-shadow: 0 0 30px var(--neon-glow); */
+    /* filter: drop-shadow(0 0 10px var(--neon-green)); */
     position: relative;
-    z-index: 2;
+    z-index: 4;
     transition: var(--transition);
+    margin-top: -160px;
+    margin-bottom: 150px;
 }
 
-.hero-image-wrapper::before {
-    content: '';
-    position: absolute;
-    width: 320px;
-    height: 320px;
-    border-radius: 50%;
-    border: 2px dashed var(--deep-black);
-    animation: rotate 10s linear infinite;
-    opacity: 0.5;
-}
 
 @keyframes rotate {
     from {
@@ -164,7 +156,7 @@ section {
 
 .profile-img:hover {
     transform: scale(1.05);
-    box-shadow: 0 0 50px var(--neon-green);
+    /* box-shadow: 0 0 50px var(--neon-green); */
 }
 
 .terminal-text {
