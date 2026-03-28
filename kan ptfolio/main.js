@@ -35,6 +35,64 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 });
 
+// ── Remove white background from profile image via canvas ──
+function removeWhiteBackground(img) {
+    const canvas = document.createElement('canvas');
+    canvas.width  = img.naturalWidth  || img.width;
+    canvas.height = img.naturalHeight || img.height;
+
+    const ctx = canvas.getContext('2d');
+    ctx.drawImage(img, 0, 0, canvas.width, canvas.height);
+
+    const imageData = ctx.getImageData(0, 0, canvas.width, canvas.height);
+    const d = imageData.data;
+
+    for (let i = 0; i < d.length; i += 4) {
+        const r = d[i], g = d[i + 1], b = d[i + 2];
+        const brightness = (r + g + b) / 3;
+
+        if (r > 230 && g > 230 && b > 230) {
+            // Pure white → fully transparent
+            d[i + 3] = 0;
+        } else if (brightness > 200) {
+            // Near-white → partially transparent (smooth edge)
+            d[i + 3] = Math.round(((255 - brightness) / 55) * 255);
+        }
+    }
+
+    ctx.putImageData(imageData, 0, 0);
+    const dataUrl = canvas.toDataURL('image/png');
+
+    // Apply to the visible <img>
+    img.src = dataUrl;
+
+    // Apply to the glitch pseudo-elements via CSS variable
+    document.documentElement.style.setProperty('--profile-bg', `url(${dataUrl})`);
+}
+
+const profileImg = document.querySelector('.profile-img');
+if (profileImg) {
+    const doProcess = () => removeWhiteBackground(profileImg);
+    if (profileImg.complete && profileImg.naturalWidth > 0) {
+        doProcess();
+    } else {
+        profileImg.addEventListener('load', doProcess, { once: true });
+    }
+}
+
+// Glitch effect on profile image click
+const glitchContainer = document.querySelector('.glitch-container');
+if (glitchContainer) {
+    glitchContainer.addEventListener('click', () => {
+        glitchContainer.classList.remove('glitch');
+        void glitchContainer.offsetWidth; // force reflow to restart
+        glitchContainer.classList.add('glitch');
+    });
+    glitchContainer.addEventListener('mouseleave', () => {
+        glitchContainer.classList.remove('glitch');
+    });
+}
+
 // Smooth scroll for nav links
 document.querySelectorAll('nav a').forEach(anchor => {
     anchor.addEventListener('click', function (e) {
