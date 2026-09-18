@@ -3,6 +3,7 @@ import videoSrc from '../assets/videos/Portfolio-ai-final.mp4'
 
 export function TalkingAvatar() {
   const video = useRef<HTMLVideoElement>(null)
+  const audioEnabled = useRef(false)
   const [reducedMotion, setReducedMotion] = useState(() => window.matchMedia('(prefers-reduced-motion: reduce)').matches)
 
   useEffect(() => {
@@ -19,10 +20,10 @@ export function TalkingAvatar() {
       return
     }
 
-    currentVideo.muted = true
+    currentVideo.muted = !audioEnabled.current
 
     const playVideo = () => {
-      currentVideo.muted = true
+      currentVideo.muted = !audioEnabled.current
       void currentVideo.play().catch((error: unknown) => {
         console.warn('Video autoplay was blocked:', error)
       })
@@ -49,6 +50,7 @@ export function TalkingAvatar() {
     if (!currentVideo || reducedMotion) return
 
     const enableAudio = () => {
+      audioEnabled.current = true
       currentVideo.muted = false
       void currentVideo.play().catch((error: unknown) => {
         console.warn('Video audio could not be enabled:', error)
