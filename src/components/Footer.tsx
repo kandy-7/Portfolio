@@ -1,0 +1,2 @@
+import { ArrowUpRight } from 'lucide-react'
+export function Footer() { return <footer><span>© 2026 Kanthimathinathan P</span><span>Built with code, curiosity &amp; caffeine.</span><a href="#home">Back to top <ArrowUpRight size={14} /></a></footer> }

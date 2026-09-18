@@ -1,0 +1,6 @@
+import { ArrowUpRight, GraduationCap, MapPin, ScanFace, Sparkles } from 'lucide-react'
+import { profile } from '../data/profile'
+
+export function About() {
+  return <section id="about" className="section-pad split-section"><div className="section-intro"><p className="section-kicker">01 / profile</p><h2>Curious by default.<br /><em>Practical by design.</em></h2><a className="text-link" href="#contact">Start a conversation <ArrowUpRight size={16} /></a></div><div className="about-content"><p className="lead-copy">I'm a final-year engineering student at SNS College of Engineering with a strong interest in cybersecurity, Python, artificial intelligence, cloud computing and software engineering. I enjoy turning technical ideas into practical systems and exploring how security, automation and intelligent applications can work together.</p><div className="info-grid"><div><GraduationCap size={18} /><span>Education</span><strong>{profile.education}</strong></div><div><Sparkles size={18} /><span>CGPA</span><strong>{profile.cgpa}</strong></div><div><ScanFace size={18} /><span>Focus</span><strong>Cybersecurity / AI / Python</strong></div><div><MapPin size={18} /><span>Location</span><strong>Coimbatore, India</strong></div></div></div></section>
+}
