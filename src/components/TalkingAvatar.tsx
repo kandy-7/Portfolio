@@ -18,17 +18,35 @@ export function TalkingAvatar() {
       currentVideo?.pause()
       return
     }
+
+    currentVideo.muted = true
+
+    const playVideo = () => {
+      currentVideo.muted = true
+      void currentVideo.play().catch((error: unknown) => {
+        console.warn('Video autoplay was blocked:', error)
+      })
+    }
+
     const observer = new IntersectionObserver(([entry]) => {
-      if (entry.isIntersecting) void currentVideo.play().catch(() => undefined)
+      if (entry.isIntersecting) playVideo()
       else currentVideo.pause()
     }, { threshold: 0.5 })
+
+    currentVideo.addEventListener('loadeddata', playVideo)
+    currentVideo.addEventListener('canplay', playVideo)
     observer.observe(currentVideo)
-    return () => observer.disconnect()
+
+    return () => {
+      observer.disconnect()
+      currentVideo.removeEventListener('loadeddata', playVideo)
+      currentVideo.removeEventListener('canplay', playVideo)
+    }
   }, [reducedMotion])
 
   return <div className="video-card">
     <div className="video-topline"><span className="eyebrow"><span className="live-dot" /> AI INTRO</span><span className="video-index">01 / 01</span></div>
-    <div className="video-frame"><video ref={video} src={videoSrc} autoPlay={!reducedMotion} muted={false} loop={!reducedMotion} playsInline preload="metadata" aria-label="Animated profile portrait of Kanthimathinathan" /></div>
+    <div className="video-frame"><video ref={video} src={videoSrc} autoPlay muted loop playsInline controls={false} preload="metadata" aria-label="Animated profile portrait of Kanthimathinathan" /></div>
     <div className="video-footer"><span>Human interface / machine-assisted</span><span>Live profile signal</span></div>
   </div>
 }
