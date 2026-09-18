@@ -44,6 +44,31 @@ export function TalkingAvatar() {
     }
   }, [reducedMotion])
 
+  useEffect(() => {
+    const currentVideo = video.current
+    if (!currentVideo || reducedMotion) return
+
+    const enableAudio = () => {
+      currentVideo.muted = false
+      void currentVideo.play().catch((error: unknown) => {
+        console.warn('Video audio could not be enabled:', error)
+      })
+      window.removeEventListener('pointerdown', enableAudio)
+      window.removeEventListener('keydown', enableAudio)
+      window.removeEventListener('touchstart', enableAudio)
+    }
+
+    window.addEventListener('pointerdown', enableAudio, { once: true })
+    window.addEventListener('keydown', enableAudio, { once: true })
+    window.addEventListener('touchstart', enableAudio, { once: true })
+
+    return () => {
+      window.removeEventListener('pointerdown', enableAudio)
+      window.removeEventListener('keydown', enableAudio)
+      window.removeEventListener('touchstart', enableAudio)
+    }
+  }, [reducedMotion])
+
   return <div className="video-card">
     <div className="video-topline"><span className="eyebrow"><span className="live-dot" /> AI INTRO</span><span className="video-index">01 / 01</span></div>
     <div className="video-frame"><video ref={video} src={videoSrc} autoPlay muted loop playsInline controls={false} preload="metadata" aria-label="Animated profile portrait of Kanthimathinathan" /></div>
